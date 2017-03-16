@@ -8,7 +8,7 @@
 		<br />	
 	</head>
 	<body>
-		<form>
+		<form action = "signup-submit.php" method="post">
 			<div>
 				Name: <input type="text" size="16" maxlength="16" /><br>
 				Gender: <label><input type="radio" name="cc" value="male"/>male</label>
