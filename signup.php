@@ -10,7 +10,7 @@
 	<body>
 		<form action = "signup-submit.php" method="post">
 			<div>
-				Name: <input type="text" size="16" maxlength="16" /><br>
+				Name: <input type="text" size="16" maxlength="16" name="name" /><br>
 				Gender: <label><input type="radio" name="cc" value="male"/>male</label>
 				        <label><input type="radio" name="cc" value="female" checked ="checked" />female</label><br>
 				Age:  <input type="text" size="6" maxlength="2" /><br>

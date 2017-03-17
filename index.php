@@ -14,8 +14,8 @@
 		<img src="photos/heartbig.gif" alt="heart gif" />
 	</body>
 </html>
-<?php
 
 
-?>
+
+
 
