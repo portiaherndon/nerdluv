@@ -32,12 +32,17 @@
 		<p> Error: Max age must be larger than min age </p>
 	<?php
 	}
-	?>
-	<?php
+	
+
 	else
 	{
-		$file = "singles.txt";
-		file_put_contents($file, 'JOHN', FILE_APPEND | LOCK_EX);
+		$file = 'singles.txt';	
+		file_put_contents($file,$_POST['name'], FILE_APPEND | LOCK_EX);
+		
+		
+
+	
+					
 	}
 	?>	
 </html>
