@@ -1,15 +1,45 @@
-<!DOCTYPE html>
+<?DOCTYPE hmtl>
 <html>
-<body>
-<?php
-var_dump($_POST); 
-echo ($_POST['name']); ?><br>
-<?php echo ($_POST['cc']); ?><br>
-<?php $age = $_POST['age'];
-echo intval($age);  
-print_r($_POST['personality type']);
-?>
-</body>
+	<?php 
+	echo var_dump($_POST);
+	if(!ctype_digit($_POST['age']))
+	{
+	?>
+		<p> Error: Invalid input for age </p>	
+	<?php	
+	}
+	elseif(!ctype_digit($_POST['min']))
+	{
+	?>
+		<p> Error: Invalid input for minimum seeking age </p>
+	<?php
+	}
+	elseif(!ctype_digit($_POST['max']))
+	{
+	?>
+		<p> Error: Invalid input for minimum seeking age </p>
+	<?php
+	}
+	elseif(($_POST['age'] <  18) || ($_POST['min'] < 18) || ($_POST['max'] < 18))
+	{
+	?>
+		<p> Error: Age must no younger than 18 </p>
+	<?php
+	}
+	elseif($_POST['max'] < $_POST['min'])
+	{
+	?>
+		<p> Error: Max age must be larger than min age </p>
+	<?php
+	}
+	?>
+	<?php
+	else
+	{
+		$file = "singles.txt";
+		file_put_contents($file, 'JOHN', FILE_APPEND | LOCK_EX);
+	}
+	?>	
 </html>
-	
+
 
