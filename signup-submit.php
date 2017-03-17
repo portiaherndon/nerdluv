@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-<?php 
+<?php
+var_dump($_POST); 
 echo ($_POST['name']); ?><br>
 <?php echo ($_POST['cc']); ?><br>
 <?php $age = $_POST['age'];
-echo (int)($age);  
+echo intval($age);  
 
 ?>
 </body>
