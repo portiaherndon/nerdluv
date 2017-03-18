@@ -6,11 +6,22 @@
 		<img src="photos/nerdluv.png" alt="nerdluv logo" /><br>
 		where meek geeks meet<br><br>
 	</head>
-	<body>
-		Matches for <?php echo $_GET['name']; ?><br>
+	<body> 
 		<?php
 		$file="singles.txt";
-		$search= $_GET['name']; 
+		$search= $_GET['name'];
+		if(strpos(file_get_contents($file),$search)) 
+		{
+			?> <p> Matches for <?php echo $search;
+			$lines = array();
+		
+			
+				
+			
+			
+
+	
+		} 
 		?>
 	</body>
 </html>
