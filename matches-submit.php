@@ -13,15 +13,11 @@
 		if(strpos(file_get_contents($file),$search)) 
 		{
 			?> <p> Matches for <?php echo $search;
-			$lines = array();
-		
-			
-				
-			
-			
-
-	
-		} 
+			$lines = array(); 
+			$lines[] = explode("\n",file_get_contents($file));
+			echo $lines[10];		
+		}
+		var_dump($lines); 
 		?>
 	</body>
 </html>
