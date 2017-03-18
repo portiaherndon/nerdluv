@@ -57,7 +57,8 @@
 		file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX);
 	?>
 	<body>
-		<p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?php echo $_POST['name'] ?>
+		<p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?php echo $_POST['name'] ?><br><br>
+		Now <a href="matches.php">log in to see your matches! </a>
 		
 	</body>
 	<?php 
