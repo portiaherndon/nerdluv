@@ -1,9 +1,10 @@
+<?php include("top.html"); ?>
 <?DOCTYPE hmtl>
 <html>
 	<head>
 		<title> Sign Up
 		</title>
-		<img src="photos/nerdluv.png" alt=nerdluv logo" />
+		
 	</head>
 
 	<?php 
@@ -82,15 +83,7 @@
 		}
 	}
 	?>	
-	<footer>
-		<p>The page is for single nerds to meet and date each other! Type in your personal information and wait for the nerdy luv to begin! Thank you for using our site. Results and page (C) Copyright NerdLuv Inc. </p>
-		<a href="index.php">
-		<img src="back.gif" alt="homepage" title="homepage" />
-		</a>
-	</footer>
-	
-		
-	
 </html>
+<?php include("bottom.html"); ?>
 
 
