@@ -12,17 +12,9 @@
 		$search= $_GET['name'];
 		if(strpos(file_get_contents($file),$search)) 
 		{
-			?> <p> Matches for <?php echo $search;
-			 
-			$lines = explode("\n",file_get_contents($file));
-			
-			
-				
-					
-		}
-		
-		echo $array[5];
-		var_dump($lines);	 
+			?> <p> Matches for <?php echo $search; 
+			$lines = explode("\n",file_get_contents($file)); 
+		} 
 		?>
 	</body>
 </html>
