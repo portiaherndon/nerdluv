@@ -24,17 +24,17 @@
 	?>
 		<p> Error: Invalid input for minimum seeking age </p>
 	<?php
-	}
-	elseif(($_POST['age'] <  18) || ($_POST['min'] < 18) || ($_POST['max'] < 18))
-	{
-	?>
-		<p> Error: Age must no younger than 18 </p>
-	<?php
-	}
+	} 
 	elseif($_POST['max'] < $_POST['min'])
 	{
 	?>
 		<p> Error: Max age must be larger than min age </p>
+	<?php
+	}
+	elseif(($_POST['person'] !== 'ESTJ') && ($_POST['person'] !== 'ISTJ') && ($_POST['person'] !== 'ENTJ') && ($_POST['person'] !== 'INTJ') && ($_POST['person'] !== 'ESTP') && ($_POST['person'] !== 'ISTP') && ($_POST['person'] !== 'ENTP') && (_POST['person'] !== 'INTP') && ($_POST['person'] !== 'ESFJ') && ($_POST['person'] !== 'ISFJ') && ($_POST['person'] !== 'ENFJ') && ($_POST['person'] !== 'INFJ') && ($_POST['person'] !== 'ESFP') && ($_POST['person'] !== 'ISFP') && ($_POST['person'] !== 'ENFP') && ($_POST['person'] !== 'INFP')) 
+	{
+	?>
+		<p> Error: Invalid put for personality type </p>
 	<?php
 	}
 	elseif ((empty($_POST['name'])) || (empty($_POST['cc'])) || (empty($_POST['age'])) || (empty($_POST['person'])) || (empty($_POST['Favorite_OS'])) || (empty($_POST['min'])) || (empty($_POST['max'])))
@@ -52,12 +52,7 @@
 		{
 			$elements = explode(",",$lines[$x]);
 			if(strcmp($_POST['name'],$elements[0]) === 0)
-			{
-				echo strcmp($_POST['name'],$elements[0]);
-				echo $_POST['name'];
-				echo $elements[0];
-				
-			
+			{ 
 			?> 
 				<p> Error: User already exists </p>	
 			<?php
