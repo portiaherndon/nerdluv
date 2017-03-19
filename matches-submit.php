@@ -30,27 +30,20 @@
 					$age = $elements[2];
 					$person = $elements[3];
 					$OS = $elements[4];
-					$num1 = elements[5];
-					echo $num1;
-
+					$num1 = elements[5]; 
 					$max = elements[6];
 					break;
 				}	
 			}
 			for($i=0;$i<count($lines);++$i)
-			{
-			
-				$element = explode(",",$lines[$i]);
-				
+			{ 
+				$element = explode(",",$lines[$i]); 
 				if($search !== $element[0])	
-				{
-					
+				{ 
 					if($sex !== $element[1]) 	
-					{
-			
-						if(($age >= $element[5]) && ($age <= $element[6]) && ($element[2] >= $num1))
+					{ 
+						if(($age >= $element[5]) && ($age <= $element[6]) && ($element[2] >= $elements[5]) && ($element[2] <= $elements[6]))
 						{	
-							echo $lines[$i];
 							if($OS === $element[4])
 							{
 								echo $element[0]; ?><br><?php
