@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>NerdLuv
-		</title>
-	
-		<img src="photos/nerdluv.png" alt="nerdluv logo" />
-		<p> where meek geeks meet </p> 
-		<br />
-	</head>
-	<body>
-		<p><strong> Welcome! </strong> </p>
-		<img src="photos/signup.gif" alt="singup gif" />
-		<a href="signup.php" />Sign up for a new account
-		</a>
-		<br />
-		<img src="photos/heartbig.gif" alt="heart gif" />
-		<a href="matches.php" />Check your matches
-		</a>
-	</body>
-</html>
+<?php include("top.html"); ?>
 
+<!-- Web Programming Step by Step, Homework 4 (NerdLuv)
+     This provided file is the front page that links to two of the files you are going
+     to write, signup.php and matches.php.  You don't need to modify this file. -->
+<div>
+	<h1>Welcome!</h1>
 
+	<ul>
+		<li>
+			<a href="signup.php">
+				<img src="signup.gif" alt="icon" />
+				Sign up for a new account
+			</a>
+		</li>
+		
+		<li>
+			<a href="matches.php">
+				<img src="heartbig.gif" alt="icon" />
+				Check your matches
+			</a>
+		</li>
+	</ul>
+</div>
 
-
-
+<?php include("bottom.html"); ?>
