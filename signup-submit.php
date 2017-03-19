@@ -42,26 +42,49 @@
 	?>
 		<p>One or more of the required fields have been left empty</p>
 	<?php
-	} 
+	}
+		 
 	else
-	{
-		$file = 'singles.txt';	
-		$info1 = $_POST['name'];
-		$info2 = $_POST['cc'];
-		$info3 = $_POST['age'];
-		$info4 = $_POST['person'];
-		$info5 = $_POST['Favorite_OS'];
-		$info6 = $_POST['min'];
-		$info7 = $_POST['max'];
-		$info = array($info1,$info2,$info3,$info4,$info5,$info6,$info7);
-		file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX);
-	?>
-	<body>
-		<p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?php echo $_POST['name'] ?><br><br>
-		Now <a href="matches.php">log in to see your matches! </a>
+	{	
+		$file = "singles.txt";
+		$lines = explode("\n",file_get_contents($file)); 
+		for($x=0; $x<count($lines);++$x)
+		{
+			$elements = explode(",",$lines[$x]);
+			if(strcmp($_POST['name'],$elements[0]) === 0)
+			{
+				echo strcmp($_POST['name'],$elements[0]);
+				echo $_POST['name'];
+				echo $elements[0];
+				
+			
+			?> 
+				<p> Error: User already exists </p>	
+			<?php
+			break; 
+			} 
+		}
+		if($x === count($lines))
+		{ 
+			$info1 = $_POST['name'];
+			$info2 = $_POST['cc'];
+			$info3 = $_POST['age'];
+			$info4 = $_POST['person'];
+			$info5 = $_POST['Favorite_OS'];
+			$info6 = $_POST['min'];
+			$info7 = $_POST['max'];
+			$info = array($info1,$info2,$info3,$info4,$info5,$info6,$info7);
+			file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX);
 		
-	</body>
-	<?php 
+	
+		?>
+		<body>
+			<p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?php echo $_POST['name'] ?><br><br>
+			Now <a href="matches.php">log in to see your matches! </a>
+		
+		</body>
+		<?php 
+		}
 	}
 	?>	
 	<footer>
