@@ -7,44 +7,50 @@
 		
 	</head>
 
-	<?php 
-	if(!ctype_digit($_POST['age']))
+	<?php
+	$name=$_POST['name'];
+	$sex=$_POST['cc'];
+	$age=$_POST['age'];
+	$person=$_POST['person'];
+	$OS=$_POST['Favorite_OS'];
+	$min=$_POST['min']; 
+	$max=$_POST['max']; 
+	if(!ctype_digit($age))
 	{
 	?>
 		<p> Error: Invalid input for age </p>	
 	<?php	
 	}
-	elseif(!ctype_digit($_POST['min']))
+	elseif(!ctype_digit($min))
 	{
 	?>
 		<p> Error: Invalid input for minimum seeking age </p>
 	<?php
 	}
-	elseif(!ctype_digit($_POST['max']))
+	elseif(!ctype_digit($max))
 	{
 	?>
 		<p> Error: Invalid input for minimum seeking age </p>
 	<?php
 	} 
-	elseif($_POST['max'] < $_POST['min'])
+	elseif($max < $min)
 	{
 	?>
 		<p> Error: Max age must be larger than min age </p>
 	<?php
 	}
-	elseif(($_POST['person'] !== 'ESTJ') && ($_POST['person'] !== 'ISTJ') && ($_POST['person'] !== 'ENTJ') && ($_POST['person'] !== 'INTJ') && ($_POST['person'] !== 'ESTP') && ($_POST['person'] !== 'ISTP') && ($_POST['person'] !== 'ENTP') && (_POST['person'] !== 'INTP') && ($_POST['person'] !== 'ESFJ') && ($_POST['person'] !== 'ISFJ') && ($_POST['person'] !== 'ENFJ') && ($_POST['person'] !== 'INFJ') && ($_POST['person'] !== 'ESFP') && ($_POST['person'] !== 'ISFP') && ($_POST['person'] !== 'ENFP') && ($_POST['person'] !== 'INFP')) 
+	elseif(($person !== 'ESTJ') && ($person !== 'ISTJ') && ($person !== 'ENTJ') && ($person !== 'INTJ') && ($person !== 'ESTP') && ($person !== 'ISTP') && ($person !== 'ENTP') && ($person !== 'INTP') && ($person !== 'ESFJ') && ($person !== 'ISFJ') && ($person !== 'ENFJ') && ($person !== 'INFJ') && ($person !== 'ESFP') && ($person !== 'ISFP') && ($person !== 'ENFP') && ($person !== 'INFP')) 
 	{
 	?>
 		<p> Error: Invalid put for personality type </p>
 	<?php
 	}
-	elseif ((empty($_POST['name'])) || (empty($_POST['cc'])) || (empty($_POST['age'])) || (empty($_POST['person'])) || (empty($_POST['Favorite_OS'])) || (empty($_POST['min'])) || (empty($_POST['max'])))
+	elseif ((empty($name)) || (empty($sex)) || (empty($age)) || (empty($person)) || (empty($OS)) || (empty($min)) || (empty($max)))
 	{
 	?>
 		<p>One or more of the required fields have been left empty</p>
 	<?php
-	}
-		 
+	} 
 	else
 	{	
 		$file = "singles.txt";
@@ -52,7 +58,7 @@
 		for($x=0; $x<count($lines);++$x)
 		{
 			$elements = explode(",",$lines[$x]);
-			if(strcmp($_POST['name'],$elements[0]) === 0)
+			if(strcmp($name,$elements[0]) === 0)
 			{ 
 			?> 
 				<p> Error: User already exists </p>	
@@ -62,17 +68,8 @@
 		}
 		if($x === count($lines))
 		{ 
-			$info1 = $_POST['name'];
-			$info2 = $_POST['cc'];
-			$info3 = $_POST['age'];
-			$info4 = $_POST['person'];
-			$info5 = $_POST['Favorite_OS'];
-			$info6 = $_POST['min'];
-			$info7 = $_POST['max'];
-			$info = array($info1,$info2,$info3,$info4,$info5,$info6,$info7);
-			file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX);
-		
-	
+			$info = array($name,$sex,$age,$person,$OS,$min,$max);
+			file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX); 
 		?>
 		<body>
 			<p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?php echo $_POST['name'] ?><br><br>
