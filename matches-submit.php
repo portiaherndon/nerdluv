@@ -45,23 +45,27 @@
 		  	    if(($age >= $element[5]) && ($age <= $element[6]) && ($element[2] >= $elements[5]) && ($element[2] <= $elements[6]))
 			    {	
 				if($OS === $element[4])
-				{ 
-				?>
-				    <div class ="match" >
-				    <p>
-				    <img src ="photos/user.jpg" alt="user image" /> <?php
-				    echo $element[0]; ?> 
-				    <ul>
-					<li>Gender:<?php echo $element[1] ?></li>
-					<li>Age: <?php echo $element[2] ?></li>
-					<li>Type: <?php echo $element[3] ?></li>
-					<li>OS: <?php echo $element[4] ?></li> 
-				    </ul>
-				    </p>
-				    </div>
-				    <?php
-					$count++;
-				} 
+				{   
+				    $matches = similar_text($person,$element[3],$perc); 
+				    if($matches > 0)
+				    {
+				    ?>
+				        <div class ="match" >
+				        <p>
+				        <img src ="photos/user.jpg" alt="user image" /> <?php
+				        echo $element[0]; ?> 
+				        <ul>
+					    <li>Gender:<?php echo $element[1] ?></li>
+					    <li>Age: <?php echo $element[2] ?></li>
+					    <li>Type: <?php echo $element[3] ?></li>
+					    <li>OS: <?php echo $element[4] ?></li> 
+				        </ul>
+				        </p>
+				        </div>
+				        <?php
+					    $count++;
+				    }
+				}	
 			    }
 			}
 		    } 
@@ -71,12 +75,6 @@
 	    {
 	    ?>
 		<p> There are no matches </p>
-	    <?php
-	    } 
-	    else
-	    {
-	    ?>
-		<p>Error: User does not exist</p>
 	    <?php
 	    } 
 	    ?>
