@@ -5,8 +5,7 @@
 		<title> Sign Up
 		</title>
 		
-	</head>
-
+	</head> 
 	<?php
 	$name=$_POST['name'];
 	$sex=$_POST['cc'];
@@ -30,7 +29,7 @@
 	elseif(!ctype_digit($max))
 	{
 	?>
-		<p> Error: Invalid input for minimum seeking age </p>
+		<p> Error: Invalid input for maximum seeking age </p>
 	<?php
 	} 
 	elseif($max < $min)
@@ -81,6 +80,4 @@
 	}
 	?>	
 </html>
-<?php include("bottom.html"); ?>
-
-
+<?php include("bottom.html"); ?> 
