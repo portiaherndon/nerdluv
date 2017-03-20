@@ -3,9 +3,7 @@
 <html>
 	<head>
 		<title>Matches
-		</title>
-		
-		
+		</title> 
 	</head>
 	<body> 
 		<?php
@@ -19,8 +17,8 @@
 		}
 		elseif(strpos(file_get_contents($file),$search)) 
 		{
-			?> <p> Matches for <?php echo $search;
-			?><br><?php 
+			?><p><strong> Matches for <?php echo $search;
+			?></strong></p><br><?php 
 			$lines = explode("\n",file_get_contents($file));
 			for($i=0; $i<count($lines); ++$i)
 			{
@@ -47,7 +45,22 @@
 						{	
 							if($OS === $element[4])
 							{
-								echo $element[0]; ?><br><?php
+							?>
+								<div class ="match" >
+								<p>
+								<img src ="photos/user.jpg" alt="user image" /> <?php
+								echo $element[0]; ?>
+								
+								<ul>
+								<li>Gender: </li>
+								<li>Age:</li>
+								<li>Type:</li>
+								<li>OS:</li>
+								</p>
+								</ul>
+								</div>
+<?php
+							
 							} 
 						}
 					}
