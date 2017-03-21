@@ -42,8 +42,11 @@ function compare($user_string,$file)
 		}
 	    }
 	}
-    } 
-    return $matches; 
+    }
+    
+     
+    return $matches;
+ 
 }
 ?>
 <!DOCTYPE html>
@@ -66,10 +69,10 @@ function compare($user_string,$file)
 		{ 
 		    $user = find_user($search,$file); 
 		    $total_matches = compare($user,$file); 
-		    ?><p><strong> Matches for <?php echo $search;
-		    ?></strong></p><br><?php 
-		    if(count($total_matches !== 0))
+		    if(count($total_matches) != 0)
 		    {
+			?><p><strong> Matches for <?php echo $search;
+		    	?></strong></p><br><?php 
 		        for($loop=0;$loop<count($total_matches);++$loop)		
 		        {
 			    $element = explode(",",$total_matches[$loop]);
