@@ -1,16 +1,9 @@
-<?php include("top.html"); ?>
-<?DOCTYPE hmtl>
-<html>
-<!-- THIS PAGE RECEIVES THE USER'S INFO BY WAY OF FORM POST AND VALIDATES THE INFORMATION GIVEN. I UNDERSTAND THAT ONE GENERAL FUNCTION THAT VALIDATES THE USER'S INPUT WOULD BE MORE EFFICIENT IN TERMS OF CODE AND TIME BUT I FIGURED IT WOULD BE BEST FOR THE USER TO KNOW WHAT KIND OF INPUT ERROR THEY HAVE. -->
-	<head>
-		<title> Sign Up
-		</title>
-		
-	</head> 
-	<?php
-			/*HERE, THE ATTRIBUTES OF THE USER RECEIVED FROM $_POST ARE 
-				PLACED INTO VARIABLES TO LIMIT USAGE OF THE GLOBL 
-				VARIABLE. NEXT EACH VARIBALE IS TESTED TO ENSURE ACCURACY */
+<?php include("top.html"); ?> 
+<!-- THIS PAGE RECEIVES THE USER'S INFO BY WAY OF FORM POST AND VALIDATES THE INFORMATION GIVEN. I UNDERSTAND THAT ONE GENERAL FUNCTION THAT VALIDATES THE USER'S INPUT WOULD BE MORE EFFICIENT IN TERMS OF CODE AND TIME BUT I FIGURED IT WOULD BE BEST FOR THE USER TO KNOW WHAT KIND OF INPUT ERROR THEY HAVE. --> 
+<?php
+	/*HERE, THE ATTRIBUTES OF THE USER RECEIVED FROM $_POST ARE 
+		PLACED INTO VARIABLES TO LIMIT USAGE OF THE GLOBL 
+		VARIABLE. NEXT EACH VARIBALE IS TESTED TO ENSURE ACCURACY */
 	$name=$_POST['name'];
 	$sex=$_POST['cc'];
 	$age=$_POST['age'];
@@ -48,13 +41,13 @@
 	    $info = array($name,$sex,$age,$person,$OS,$min,$max);
 	    file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX); 
 	    ?> 
-	    <body>
+
 	        <p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?= $name ?><br><br>
 		    Now <a href="matches.php">log in to see your matches! </a>
 	
-	    </body>
+		</p>
 	<?php 
 	} 
 	?>	
-</html>
 <?php include("bottom.html"); ?> 
+
