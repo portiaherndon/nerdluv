@@ -26,7 +26,7 @@
 	elseif($max < $min) {
 	    ?> <p> Error: Max age must be larger than min age </p> <?php
 	}
-	elseif(!preg_match("/^[IE][NS][TF][JP]$/",$type)) {
+	elseif(!preg_match("/^[IE][NS][TF][JP]$/",$person)) {
 	     ?> <p> Error: Invalid put for personality type </p> <?php
 	}
 	elseif ((empty($name)) || (empty($sex)) || (empty($age)) || (empty($person)) || (empty($OS)) || (empty($min)) || (empty($max)))
