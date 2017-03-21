@@ -42,11 +42,8 @@ function compare($user_string,$file)
 		}
 	    }
 	}
-    }
-    
-     
-    return $matches;
- 
+    } 
+    return $matches; 
 }
 ?>
 <!DOCTYPE html>
@@ -71,22 +68,22 @@ function compare($user_string,$file)
 		    $total_matches = compare($user,$file); 
 		    if(count($total_matches) != 0)
 		    {
-			?><p><strong> Matches for <?php echo $search;
-		    	?></strong></p><br><?php 
+			?><p><strong> Matches for <?= $search;
+		    	?></strong></p><?php 
 		        for($loop=0;$loop<count($total_matches);++$loop)		
 		        {
 			    $element = explode(",",$total_matches[$loop]);
 			    ?>
 			    <div class ="match" >
 		    	    	<p>
-			    	<img src ="photos/user.jpg" alt="user image" /> <?php
-				    echo $element[0]; ?>
+			    	<img src ="photos/user.jpg" alt="user image" /> <?=
+				    $element[0]; ?>
 				</p> 
 				<ul>
-				    <li><strong>Gender:</strong><?php echo $element[1] ?></li>
-				    <li><strong>Age: </strong><?php echo $element[2] ?></li>
-				    <li><strong>Type: </strong><?php echo $element[3] ?></li>
-				    <li><strong>OS: </strong><?php echo $element[4] ?></li> 
+				    <li><strong>Gender:</strong><?= $element[1] ?></li>
+				    <li><strong>Age: </strong><?= $element[2] ?></li>
+				    <li><strong>Type: </strong><?= $element[3] ?></li>
+				    <li><strong>OS: </strong><?= $element[4] ?></li> 
 				</ul> 
 			    </div>
 			    <?php 

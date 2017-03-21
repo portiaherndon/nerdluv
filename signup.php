@@ -21,9 +21,7 @@
 				<option value="Mac OS X" />Mac OS X</option>
 				<option value="Linux" />Linux</option>
 			    </select></li><br />
-			    <li><strong>Seeking Age: </strong><input type="text" size="6" maxlength="2" placeholder="min" name="min"/> to <input type="text" size="6" maxlength="2" placeholder="max" name="max" /></li><br>
-			 
-			<br>
+			    <li><strong>Seeking Age: </strong><input type="text" size="6" maxlength="2" placeholder="min" name="min"/> to <input type="text" size="6" maxlength="2" placeholder="max" name="max" /></li><br /> 
 			<input type="submit" value="Sign Up" />
 		</fieldset>
 	    </form>
