@@ -1,4 +1,6 @@
-<?php include("top.html"); 
+<?php include("top.html");
+?>
+<!-- THIS FUNCTION IS CALLED FIND_USER. IT TAKES BOTH THE NAME SENT FROM MATCHES-PHP AND THE FILE TO SEARCH FOR THE USER IN THE FILE. IT THEN RETURNS THE USER'S INFO TO THE MAIN CODE --> <?php
 function find_user($user,$file)
 { 
     if(strpos(file_get_contents($file),$user)) 
@@ -15,6 +17,9 @@ function find_user($user,$file)
     } 
     return $lines[$i];
 }
+?>
+<!-- THIS FUNCTION IS CALLED COMPARE AND TAKES THE SAME PARAMETERS. I JUST REALIZED THAT I COULD HAVE CALLED THIS FUNCTION FROM THE FIND_USER FUNCTION AND ELIMINATED THE AMOUNT OF PHP CODE IN BETWEEN THE HTML. IF I HAVE ENOUGH TIME, I WILL MAKE THOSE CHANGES.THIS FUNCTION RETURNS ALL OF THE MATCHES.
+-->
 function compare($user_string,$file)
 {
     $count =0;
@@ -46,6 +51,8 @@ function compare($user_string,$file)
     return $matches; 
 }
 ?>
+<!-- THIS PAGE RECEIVES THE USER'S NAME BY WAY OF GET, LOOKS UP THAT NAME, STORES OF THE USER'S INFOINTO AN ARRAY AND THEN CYCLES THROUGH THE FILE FOR MATCHES.
+THE FIND_USER FUNCTION SIMPLY LOOKS FOR THE USER IN THE FILE TO SEE IF THIS USER IS EXISTS IN THE SYSTEM. ONCE FOUND, THAT USER'S INFOR IS SENT BACK TO THE COMPARE FUNCTION TO COMPARE THAT USER TO THE OTHER USERS IN THE FILE. THIS FUNCTION BREAKS EACH LINE DOWN TO AN ARRAY OF THE POTENTIAL MATCHES INFO. IF MATCHES BASED ON CERTAIN CRITERIA, THE ORIGINAL, BEFORE IT WAS BROKEN INTO AN ARRAY, IS RETURNED FROM THE FUNCTION TO BE DISPLAYED TO THE USER -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -63,7 +70,8 @@ function compare($user_string,$file)
 	        <?php
 	    	}
 	    	else 
-		{ 
+		{
+?> <!-- HERE THE 2 FUNCTION ARE CALLED. IF THE MATCHES ARE FOUND, TOTAL_MATCHES !== 0, THEN I BEGIN TO PRINT THE INFORMATION --> <?php 
 		    $user = find_user($search,$file); 
 		    $total_matches = compare($user,$file); 
 		    if(count($total_matches) != 0)
@@ -80,6 +88,7 @@ function compare($user_string,$file)
 				    $element[0]; ?>
 				</p> 
 				<ul>
+<!-- HERE I USE THE DYNAMIC EXPRESSION TO OUTPUT ALL OF THE INFO OF THE MATCHES -->
 				    <li><strong>Gender:</strong><?= $element[1] ?></li>
 				    <li><strong>Age: </strong><?= $element[2] ?></li>
 				    <li><strong>Type: </strong><?= $element[3] ?></li>
