@@ -7,8 +7,10 @@
 		</title>
 		
 	</head> 
-	<!-- HERE, THE ATTRIBUTES OF THE USER RECEIVED FROM $_POST ARE PLACED INTO VARIABLES TO LIMIT USAGE OF THE GLOBL VARIABLE. NEXT EACH VARIBALE IS TESTED TO ENSURE ACCURACY -->
 	<?php
+			/*HERE, THE ATTRIBUTES OF THE USER RECEIVED FROM $_POST ARE 
+				PLACED INTO VARIABLES TO LIMIT USAGE OF THE GLOBL 
+				VARIABLE. NEXT EACH VARIBALE IS TESTED TO ENSURE ACCURACY */
 	$name=$_POST['name'];
 	$sex=$_POST['cc'];
 	$age=$_POST['age'];
@@ -39,10 +41,13 @@
 	}
 	else
 	{ 
+			/*THE USER'S INPUT IS PLACE INTO AN ARRAY 
+			USING THE ARRAY FUNCTION AND THEN 
+			PLACED INTO THE FILE USING THE 
+			FILE_PUT_CONTENTS FUNCTION*/ 
 	    $info = array($name,$sex,$age,$person,$OS,$min,$max);
 	    file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX); 
-	    ?>
-<!--ABOVE, THE USER'S INPUT IS PLACE INTO AN ARRAY USING THE ARRAY FUNCTION AND THEN PLACED INTO THE FILE USING THE FILE_PUT_CONTENTS FUNCTION -->
+	    ?> 
 	    <body>
 	        <p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?= $name ?><br><br>
 		    Now <a href="matches.php">log in to see your matches! </a>
