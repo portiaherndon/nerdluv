@@ -1,83 +1,102 @@
-<?php include("top.html"); ?>
+<?php include("top.html"); 
+function find_user($user,$file)
+{ 
+    if(strpos(file_get_contents($file),$user)) 
+    {
+        $lines = explode("\n",file_get_contents($file)); 
+        for($i=0; $i<count($lines); ++$i)
+        { 
+            $elements = explode(",",$lines[$i]); 
+            if($user === $elements[0])
+            { 
+   	        break;
+	    }	
+        }
+    } 
+    return $lines[$i];
+}
+function compare($user_string,$file)
+{
+    $count =0;
+    $matches = array();
+    $user = explode(",",$user_string);
+    $lines = explode("\n",file_get_contents($file));
+    for($i=0;$i<count($lines);++$i)
+    {
+   	$element = explode(",",$lines[$i]);
+	if($user[0] !== $element[0])
+	{
+	    if($user[1] !== $element[1])
+	    {
+		if(($user[2] >= $element[5]) && ($user[2] <= $element[6]) && ($element[2] >= $user[5]) && ($element[2] <= $user[6]))
+		{
+		    if($user[4] === $element[4])
+		    {
+			$sim = similar_text($user[3],$element[3],$perc);
+			if($matches > 0)
+			{
+			    $matches[$count] = $lines[$i];	
+			    $count++;
+			}
+		    }
+		}
+	    }
+	}
+    } 
+    return $matches; 
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Matches
 		</title> 
 	</head>
-	<body> 
-	    <?php
-	    $file="singles.txt";
-	    $search= $_GET['name'];
-	    if(empty($search))
-	    {
-	    ?>
-	 	<p>Error: Required field left empty</p>
-	    <?php
-	    }
-	    elseif(strpos(file_get_contents($file),$search)) 
-	    {
-		?><p><strong> Matches for <?php echo $search;
-		?></strong></p><br><?php 
-		$lines = explode("\n",file_get_contents($file));
-		for($i=0; $i<count($lines); ++$i)
-		{
-	   	    $elements = explode(",",$lines[$i]);
-		    if($search === $elements[0])
-		    {
-			$sex = $elements[1];
-			$age = $elements[2];
-			$person = $elements[3];
-			$OS = $elements[4];
-			$num1 = elements[5]; 
-			$max = elements[6];
-			break;
-		    }	
-		}
-		$count = 0;
-		for($i=0;$i<count($lines);++$i)
+	<body>
+		<?php
+		$file="singles.txt";
+		$search= $_GET['name']; 
+	        if(empty($search))
+	        {
+	        ?>
+	 	    <p>Error: Required field left empty</p>
+	        <?php
+	    	}
+	    	else 
 		{ 
-		    $element = explode(",",$lines[$i]); 
-		    if($search !== $element[0])	
-		    { 
-			if($sex !== $element[1]) 	
-			{ 
-		  	    if(($age >= $element[5]) && ($age <= $element[6]) && ($element[2] >= $elements[5]) && ($element[2] <= $elements[6]))
-			    {	
-				if($OS === $element[4])
-				{   
-				    $matches = similar_text($person,$element[3],$perc); 
-				    if($matches > 0)
-				    {
-				    ?>
-				        <div class ="match" >
-				        <p>
-				        <img src ="photos/user.jpg" alt="user image" /> <?php
-				        echo $element[0]; ?> 
-				        <ul>
-					    <li>Gender:<?php echo $element[1] ?></li>
-					    <li>Age: <?php echo $element[2] ?></li>
-					    <li>Type: <?php echo $element[3] ?></li>
-					    <li>OS: <?php echo $element[4] ?></li> 
-				        </ul>
-				        </p>
-				        </div>
-				        <?php
-					    $count++;
-				    }
-				}	
-			    }
-			}
+		    $user = find_user($search,$file); 
+		    $total_matches = compare($user,$file); 
+		    ?><p><strong> Matches for <?php echo $search;
+		    ?></strong></p><br><?php 
+		    if(count($total_matches !== 0))
+		    {
+		        for($loop=0;$loop<count($total_matches);++$loop)		
+		        {
+			    $element = explode(",",$total_matches[$loop]);
+			    ?>
+			    <div class ="match" >
+		    	    	<p>
+			    	<img src ="photos/user.jpg" alt="user image" /> <?php
+				    echo $element[0]; ?>
+				</p> 
+				<ul>
+				    <li><strong>Gender:</strong><?php echo $element[1] ?></li>
+				    <li><strong>Age: </strong><?php echo $element[2] ?></li>
+				    <li><strong>Type: </strong><?php echo $element[3] ?></li>
+				    <li><strong>OS: </strong><?php echo $element[4] ?></li> 
+				</ul> 
+			    </div>
+			    <?php 
+			} 
 		    } 
+	    	    else
+	    	    {
+	    	    ?>
+		    <p> There are no matches </p>
+	    	    <?php
+	    	    } 
 		}
-	    }
-	    if($count === 0)
-	    {
-	    ?>
-		<p> There are no matches </p>
-	    <?php
-	    } 
-	    ?>
+	    	?>
 	</body>
 </html>
 <?php include("bottom.html"); ?>
