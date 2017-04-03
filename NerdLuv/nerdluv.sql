@@ -8,8 +8,8 @@
 -- Server version   5.0.45-log
 
 
-mysql -u dherndo_portia -p Pherndon1234
-USE nerdluv;
+
+
 
 DROP TABLE IF EXISTS basic_info;
 CREATE TABLE basic_info (
