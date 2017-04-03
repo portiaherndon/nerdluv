@@ -15,6 +15,7 @@ gender ENUM ('M','F') DEFAULT 'F',
 age TINYINT(2) UNSIGNED NOT NULL,
 PRIMARY KEY (id)
 );
+
 INSERT INTO basic_info VALUES
 (NULL, 'Ada Lovelace', 'F', 96),
 (NULL, 'Adele Goldberg', 'F', 65),
@@ -145,8 +146,6 @@ INSERT INTO type VALUES
 (NULL, 'INTJ'),
 (NULL, 'ENFJ');
 
-
-
 DROP TABLE IF EXISTS fav_os;
 CREATE TABLE fav_os (
 id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -154,6 +153,7 @@ system ENUM ('Mac OS X','Windows','Linux') DEFAULT 'Windows',
 PRIMARY KEY (id)
 );
 
+INSERT INTO fav_os VALUES
 (NULL, 'Linux'),
 (NULL, 'Windows'),
 (NULL, 'Mac OS X'),
@@ -216,12 +216,13 @@ PRIMARY KEY (id)
 
 DROP TABLE IF EXISTS seeking;
 CREATE TABLE seeking (
-id INT(8) UNSIGNED NOT NULL AUTO_INCREMEMNT,
+id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
 min TINYINT(2) UNSIGNED NOT NULL,
 max TINYINT(2) UNSIGNED NOT NULL,
 PRIMARY KEY (id)
 ); 
 
+INSERT INTO seeking VALUES
 (NULL,24,99),
 (NULL,50,70),
 (NULL,31,50),
