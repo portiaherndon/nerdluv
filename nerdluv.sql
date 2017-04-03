@@ -10,7 +10,7 @@
 DROP TABLE IF EXISTS basic_info;
 CREATE TABLE basic_info (
 id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-name VARCHAR(16) DEFAULT NOT NULL,
+name VARCHAR(16) DEFAULT NULL,
 gender ENUM ('M','F') DEFAULT 'F',
 age TINYINT(2) UNSIGNED NOT NULL,
 PRIMARY KEY (id)
@@ -72,7 +72,7 @@ INSERT INTO basic_info VALUES
 (NULL, 'Anthony Brown','M',32),
 (NULL, 'Ericka Longfield','F',25),
 (NULL, 'Devin Allen','M',45),
-(NILL, 'Portia Herndon','F',24),
+(NULL, 'Portia Herndon','F',24),
 (NULL, 'Liana Taylor','F',24),
 (NULL, 'Anthony Moore','M',24);
 
@@ -104,7 +104,7 @@ INSERT INTO type VALUES
 (NULL, 'ESFJ'),
 (NULL, 'ESTP'),
 (NULL, 'ENFP'),
-(NULL, 'ISFP,),
+(NULL, 'ISFP'),
 (NULL, 'ENFJ'),
 (NULL, 'ESFJ'),
 (NULL, 'INTP'),
@@ -281,4 +281,10 @@ PRIMARY KEY (id)
 (NULL,10,90),
 (NULL,10,90),
 (NULL,25,60);
- 
+
+-- debug output to just show the contents of all tables
+/*SHOW TABLES;
+SELECT * FROM basic_info;
+SELECT * FROM type;
+SELECT * FROM fav_os;
+SELECT * FROM seeking; */
