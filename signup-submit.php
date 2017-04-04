@@ -38,8 +38,18 @@
 			USING THE ARRAY FUNCTION AND THEN 
 			PLACED INTO THE FILE USING THE 
 			FILE_PUT_CONTENTS FUNCTION*/ 
-	    $info = array($name,$sex,$age,$person,$OS,$min,$max);
-	    file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX); 
+	    //$info = array($name,$sex,$age,$person,$OS,$min,$max);
+	    //file_put_contents($file,implode(',',$info)."\n", FILE_APPEND | LOCK_EX); 
+	    $db = new PDO("mysql:dbname=nerdluv","root","Pherndon1234");
+	    $name = $db->quote($name);
+	    INSERT INTO basic_info
+	    VALUES(NULL,$name,$sex,$age);
+	    INSERT INTO fav_os
+	    VALUES(NULL,$OS);
+	    INSERT INTO type
+	    VALUES(NULL,$person);
+	    INSERT INTO seeking
+	    VALUES(NULL,$min,$max);
 	    ?> 
 
 	        <p><strong> Thank you! </strong><br><br>Welcome to NerdLuv, <?= $name ?><br><br>
